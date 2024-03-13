@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Vehicle_Rental_Management_System
 {
-    class Truck
+    class Truck : Vehicle
     {
         public int Capacity { get; set; }
         public string TruckType { get; set; }

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Vehicle_Rental_Management_System
 {
-    class Motorcycle
+    class Motorcycle : Vehicle
     {
         public int EngineCapacity { get; set; }
         public string FuelType { get; set; }
