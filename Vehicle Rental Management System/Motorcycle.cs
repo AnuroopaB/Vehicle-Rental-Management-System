@@ -11,8 +11,10 @@ namespace Vehicle_Rental_Management_System
         public int EngineCapacity { get; set; }
         public string FuelType { get; set; }
         public bool HasFairing { get; set; }
-        void DisplayDetails()
+        //Overriding Abstract method
+        public override void DisplayDetails()
         {
+            Console.WriteLine($"Model is {Model}\nManufacturer is {Manufacturer}\nYear is {Year}\nRentalPrice is {RentalPrice}\n");
         }
     }
 }

@@ -4,8 +4,11 @@
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("New Project");
-
+            Car car = new Car();
+            Truck truck = new Truck();
+            Motorcycle motorcycle = new Motorcycle();
+            RentalAgency rentalAgency = new RentalAgency();
+            car.DisplayDetails();
         }
     }
 }

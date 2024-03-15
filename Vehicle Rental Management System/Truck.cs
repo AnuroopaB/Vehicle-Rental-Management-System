@@ -11,8 +11,10 @@ namespace Vehicle_Rental_Management_System
         public int Capacity { get; set; }
         public string TruckType { get; set; }
         public bool FourWheelDrive { get; set; }
-        void DisplayDetails()
+        //Overriding Abstract method
+        public override void DisplayDetails()
         {
+            Console.WriteLine($"Model is {Model}\nManufacturer is {Manufacturer}\nYear is {Year}\nRentalPrice is {RentalPrice}\n");
         }
     }
 }
