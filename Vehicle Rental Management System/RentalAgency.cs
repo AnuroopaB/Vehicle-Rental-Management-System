@@ -22,6 +22,7 @@ namespace Vehicle_Rental_Management_System
             {
                 VehicleProperties();
                 Car car = new Car(model, manufacturer, year, rentalPrice);
+
                 Console.WriteLine("\nVehicle added successfully!");
             }
             else if (vehicleType == "truck")
@@ -47,6 +48,7 @@ namespace Vehicle_Rental_Management_System
         }
         public void RentVehicle()
         {
+            
         }
         void VehicleProperties()
         {

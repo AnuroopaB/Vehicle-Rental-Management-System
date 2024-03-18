@@ -17,12 +17,25 @@ namespace Vehicle_Rental_Management_System
             this.Manufacturer = manufacturer;
             this.Year = year;
             this.RentalPrice = rentalPrice;
-
+            Console.Write("\nEnter the engine capacity: ");
+            this.EngineCapacity = int.Parse(Console.ReadLine());
+            Console.Write("\nEnter the type of fuel: ");
+            this.FuelType = Console.ReadLine();
+            Console.Write("\nHas fairing? (Yes/No) ");
+            string check = (Console.ReadLine()).ToLower();
+            if (check == "yes")
+            {
+                this.HasFairing = true;
+            }
+            else
+            {
+                this.HasFairing = false;
+            }
         }
         //Overriding Abstract method
         public override void DisplayDetails()
         {
-            Console.WriteLine($"Model is {Model}\nManufacturer is {Manufacturer}\nYear is {Year}\nRentalPrice is {RentalPrice}\n");
+            Console.WriteLine($"Model is {Model}.\nManufacturer is {Manufacturer}.\nYear is {Year}\nRentalPrice is {RentalPrice}.\nEngine capacity is {EngineCapacity}.\nFuel type is {FuelType}.\nHas Fairing: {HasFairing}.\n");
         }
     }
 }
