@@ -11,6 +11,14 @@ namespace Vehicle_Rental_Management_System
         public int EngineCapacity { get; set; }
         public string FuelType { get; set; }
         public bool HasFairing { get; set; }
+        public Motorcycle(string model, string manufacturer, int year, double rentalPrice)
+        {
+            this.Model = model;
+            this.Manufacturer = manufacturer;
+            this.Year = year;
+            this.RentalPrice = rentalPrice;
+
+        }
         //Overriding Abstract method
         public override void DisplayDetails()
         {

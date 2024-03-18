@@ -13,10 +13,35 @@ namespace Vehicle_Rental_Management_System
         public string EngineType { get; set; }
         public string Transmission { get; set; }
         public bool Convertible { get; set; }
+        public Car(string model, string manufacturer, int year, double rentalPrice)
+        {
+            this.Model = model;
+            this.Manufacturer = manufacturer;
+            this.Year = year;
+            this.RentalPrice = rentalPrice;
+            Console.Write("\nEnter the number of seats: ");
+            this.Seats = int.Parse(Console.ReadLine());
+            Console.Write("\nEnter the type of engine: ");
+            this.EngineType = Console.ReadLine();
+            Console.Write("\nEnter the Transmission: ");
+            this.Transmission = Console.ReadLine();
+            Console.Write("\nIs it covertible? (Yes/No) ");
+            string check = (Console.ReadLine()).ToLower();
+            if (check == "yes")
+            {
+                this.Convertible = true;
+            }
+            else
+            {
+                this.Convertible = false;
+            }
+
+        }
         //Overriding Abstract method
         public override void DisplayDetails()
         {
-            Console.WriteLine($"Model is {Model}\nManufacturer is {Manufacturer}\nYear is {Year}\nRentalPrice is {RentalPrice}\n");
+            Console.WriteLine($"Model is {Model}\nManufacturer is {Manufacturer}.\nYear is {Year}.\nRental price is {RentalPrice}.\nThere are {Seats} seats.\nEngine type is {EngineType}.\nTransmisson is {Transmission}.\nConvertible: {Convertible}.\n");
         }
+        
     }
 }

@@ -13,13 +13,6 @@ namespace Vehicle_Rental_Management_System
         protected string Manufacturer { get; set; }
         protected int Year { get; set; }
         protected double RentalPrice { get; set; }
-        /*Vehicle(string Model, string Manufacturer, int Year, double RentalPrice)
-        {
-            this.Model = Model;
-            this.Manufacturer = Manufacturer;  
-            this.Year = Year;
-            this.RentalPrice = RentalPrice;
-        }*/
         //Abstract method
         public abstract void DisplayDetails();
     }

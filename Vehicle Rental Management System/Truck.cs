@@ -11,6 +11,13 @@ namespace Vehicle_Rental_Management_System
         public int Capacity { get; set; }
         public string TruckType { get; set; }
         public bool FourWheelDrive { get; set; }
+        public Truck(string model, string manufacturer, int year, double rentalPrice)
+        {
+            this.Model = model;
+            this.Manufacturer = manufacturer;
+            this.Year = year;
+            this.RentalPrice = rentalPrice;
+        }
         //Overriding Abstract method
         public override void DisplayDetails()
         {
