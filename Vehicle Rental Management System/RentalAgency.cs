@@ -82,6 +82,49 @@ namespace Vehicle_Rental_Management_System
         }
         public void RemoveVehicle()
         {
+            string vehicleName;
+            int i, j = -1;
+            Console.WriteLine("\nPlease find the list of vehicles:\n");
+            for (i = 0; i <= count; i++)
+            {
+                Fleet[i].DisplayDetails();
+            }
+            Console.Write("\nEnter the vehicle name for removing from System: ");
+            vehicleName = Console.ReadLine().ToLower();
+            for (i = 0; i <= count; i++)
+            {
+                if (Fleet[i].vName.ToLower() == vehicleName)
+                {
+                    j = i; break;
+                }
+            }
+            if (j != -1)
+            {
+                if (Fleet[j].rentalStatus == true)
+                {
+                    Console.WriteLine("Sorry, the vehicle is already in rental, status cannot be removed now.");
+                }
+                else
+                {
+                    Fleet[j] = null;
+                    for (i = j; i <= count; i++)
+                    {
+                        Fleet[i] = Fleet[i + 1];
+                    }
+                    count--;
+                    Console.WriteLine($"\nSuccesfully removed {Fleet[j].vName}!");
+                    for (i = 0; i <= count; i++)
+                    {
+                        Fleet[i].DisplayDetails();
+                    }
+                }
+            }
+            else { Console.WriteLine("\nEntered vehicle name is not found, please try again!"); }
+            Console.WriteLine("Do you want to remove another vehicle? (Yes/No) ");
+            if (Console.ReadLine().ToLower() == "yes")
+            {
+                RemoveVehicle();
+            }
         }
         public void RentVehicle()
         {
