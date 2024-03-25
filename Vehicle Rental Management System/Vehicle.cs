@@ -9,10 +9,12 @@ namespace Vehicle_Rental_Management_System
     //Abstract class
     abstract class Vehicle
     {
-        protected string Model { get; set; }
-        protected string Manufacturer { get; set; }
-        protected int Year { get; set; }
-        protected double RentalPrice { get; set; }
+        public string Model { get; set; }
+        public string Manufacturer { get; set; }
+        public int Year { get; set; }
+        public double RentalPrice { get; set; }
+        public string vName { get; set; }
+        public bool rentalStatus = false;
         //Abstract method
         public abstract void DisplayDetails();
     }
