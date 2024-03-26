@@ -6,7 +6,7 @@ namespace Vehicle_Rental_Management_System
     //Inheriting properties of parent class Vehicle
     class Truck : Vehicle
     {
-        public float Capacity { get; set; }
+        public int Capacity { get; set; }
         public string TruckType { get; set; }
         public bool FourWheelDrive { get; set; }
  

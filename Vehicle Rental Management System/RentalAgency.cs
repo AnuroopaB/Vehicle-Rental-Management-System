@@ -9,12 +9,17 @@ namespace Vehicle_Rental_Management_System
         public Vehicle[] Fleet = new Vehicle[50];
         public double TotalRevenue { get; set; }
         public int count { get; set; }
-        string vehicleType, model, manufacturer, owner, engineType, transmission, vName, truckType, fuelType;
-        int year, seats, engineCapacity, carIncrement = 2, truckIncrement = 2, motorCycleIncrement = 2;
+        string vehicleType, model, manufacturer, engineType, transmission, vName, truckType, fuelType;
+        int year, seats, capacity, engineCapacity, carIncrement = 2, truckIncrement = 2, motorCycleIncrement = 2;
         double rentalPrice;
-        float capacity;
         bool convertible, fourWheelDrive, hasFairing;
 
+        //Constructor
+        public RentalAgency(double totalRevenue, int vehicleCount)
+        {
+            this.TotalRevenue = totalRevenue;
+            this.count = vehicleCount;
+        }
         //Method for adding vehicles
         public void AddVehicle()
         {
@@ -35,10 +40,10 @@ namespace Vehicle_Rental_Management_System
                     Convertible = convertible,
                     vName = vName
                 };
-                Fleet[count++] = car;
+                Fleet[++count] = car;
                 CheckAdd("car",vName);
             }
-            if (vehicleType == "truck")
+            else if (vehicleType == "truck")
             {
                 VehicleProperties(vehicleType);
                 Truck truck = new Truck
@@ -52,7 +57,7 @@ namespace Vehicle_Rental_Management_System
                     FourWheelDrive = fourWheelDrive,
                     vName = vName
                 };
-                Fleet[count++] = truck;
+                Fleet[++count] = truck;
                 CheckAdd("truck", vName);
             }
             else if (vehicleType == "motorcycle")
@@ -69,7 +74,7 @@ namespace Vehicle_Rental_Management_System
                     HasFairing = hasFairing,
                     vName = vName
                 };
-                Fleet[count++] = motorcycle;
+                Fleet[++count] = motorcycle;
                 CheckAdd("motorcycle", vName);
             }
             else
@@ -92,22 +97,21 @@ namespace Vehicle_Rental_Management_System
             {
                 if (Fleet[index].rentalStatus == true)
                 {
-                    Console.WriteLine("Sorry, the vehicle is already in rental status, cannot be removed now.");
+                    Console.WriteLine("\nSorry, the vehicle is already in rental status, cannot be removed now.");
                 }
                 else
                 {
+                    Console.WriteLine($"\nSuccesfully removed {Fleet[index].vName}!");
                     Fleet[index] = null;
                     for (int i = index; i <= count; i++)
                     {
                         Fleet[i] = Fleet[i + 1];
                     }
                     count--;
-                    Console.WriteLine($"\nSuccesfully removed {Fleet[index].vName}!");
-                    DisplayFleet();
                 }
             }
             else { Console.WriteLine("\nEntered vehicle name is not found, please try again!"); }
-            Console.Write("Do you want to remove another vehicle? (Yes/No) ");
+            Console.Write("\nDo you want to remove another vehicle? (Yes/No) ");
             if (Console.ReadLine().ToLower() == "yes")
             {
                 RemoveVehicle();
@@ -119,7 +123,7 @@ namespace Vehicle_Rental_Management_System
         {
             string vehicleName;
             int index, days;
-            Console.WriteLine("\nPlease find the list of available vehicles:\n");
+            //Console.WriteLine("\nPlease find the list of available vehicles:\n");
             DisplayFleet();
             Console.Write("\nEnter the vehicle name for rental: ");
             vehicleName = Console.ReadLine().ToLower();
@@ -140,7 +144,7 @@ namespace Vehicle_Rental_Management_System
                 }
             }
             else { Console.WriteLine("\nEntered vehicle name is not found, please try again!"); }
-            Console.Write("Do you want to rent another vehicle? (Yes/No) ");
+            Console.Write("\nDo you want to rent another vehicle? (Yes/No) ");
             if (Console.ReadLine().ToLower() == "yes")
             {
                 RentVehicle();
@@ -151,23 +155,23 @@ namespace Vehicle_Rental_Management_System
         void VehicleProperties(string vehicleType)
         {
             string check;
-            Console.Write("\nEnter the model of vehicle: ");
+            Console.Write("Enter the model of vehicle: ");
             model = Console.ReadLine();
-            Console.Write("\nEnter the manufacturer of vehicle: ");
+            Console.Write("Enter the manufacturer of vehicle: ");
             manufacturer = Console.ReadLine();
-            Console.Write("\nEnter the year of manufacture: ");
+            Console.Write("Enter the year of manufacture: ");
             year = int.Parse(Console.ReadLine());
-            Console.Write("\nEnter the rental price per day: ");
+            Console.Write("Enter the rental price per day: ");
             rentalPrice = double.Parse(Console.ReadLine());
             if (vehicleType == "car")
             {
-                Console.Write("\nEnter the number of seats: ");
+                Console.Write("Enter the number of seats: ");
                 seats = int.Parse(Console.ReadLine());
-                Console.Write("\nEnter the type of engine: ");
+                Console.Write("Enter the type of engine: ");
                 engineType = Console.ReadLine();
-                Console.Write("\nEnter the Transmission: ");
+                Console.Write("Enter the Transmission: ");
                 transmission = Console.ReadLine();
-                Console.Write("\nIs it covertible (Yes/No)? ");
+                Console.Write("Is it covertible (Yes/No)? ");
                 check = (Console.ReadLine()).ToLower();
                 convertible = check == "yes" ? true : false;
                 vName = "Car_" + carIncrement.ToString();
@@ -175,11 +179,11 @@ namespace Vehicle_Rental_Management_System
             }
             else if (vehicleType == "truck")
             {
-                Console.Write("\nEnter the capacity in litres: ");
-                capacity = float.Parse(Console.ReadLine());
-                Console.Write("\nEnter the type of truck: ");
+                Console.Write("Enter the passenger capacity: ");
+                capacity = int.Parse(Console.ReadLine());
+                Console.Write("Enter the type of truck: ");
                 truckType = Console.ReadLine();
-                Console.Write("\nIs it four wheel drive (Yes/No)? ");
+                Console.Write("Is it four wheel drive (Yes/No)? ");
                 check = (Console.ReadLine()).ToLower();
                 fourWheelDrive = check == "yes" ? true : false;
                 vName = "Truck_" + truckIncrement.ToString();
@@ -187,11 +191,11 @@ namespace Vehicle_Rental_Management_System
             }
             else
             {
-                Console.Write("\nEnter the engine capacity: ");
+                Console.Write("Enter the engine capacity: ");
                 engineCapacity = int.Parse(Console.ReadLine());
-                Console.Write("\nEnter the type of fuel: ");
+                Console.Write("Enter the type of fuel: ");
                 fuelType = Console.ReadLine();
-                Console.Write("\nHas fairing (Yes/No)? ");
+                Console.Write("Has fairing (Yes/No)? ");
                 check = (Console.ReadLine()).ToLower();
                 hasFairing = check == "yes" ? true : false;
                 this.vName = "Motorcycle_" + motorCycleIncrement.ToString();
@@ -200,8 +204,9 @@ namespace Vehicle_Rental_Management_System
         }
 
         //Method for displaying all the vehicle details added in fleet
-        void DisplayFleet()
+       public void DisplayFleet()
         {
+            Console.WriteLine("\nPlease find the list of available vehicles:\n");
             for (int i = 0; i <= count; i++)
             {
                 Fleet[i].DisplayDetails();
@@ -212,7 +217,7 @@ namespace Vehicle_Rental_Management_System
         void CheckAdd(string vehicle, string vehicleName)
         {
             Console.WriteLine($"\nNew {vehicle} {vehicleName} added successfully!");
-            Console.Write("Do you want to add another {vehicle} (Yes/No)? ");
+            Console.Write("\nDo you want to add another vehicle (Yes/No)? ");
             if (Console.ReadLine().ToLower() == "yes")
             {
                 AddVehicle();
