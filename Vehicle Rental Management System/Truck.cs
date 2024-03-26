@@ -1,11 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿//Truck class
 
 namespace Vehicle_Rental_Management_System
 {
+    //Inheritance
+    //Inheriting properties of parent class Vehicle
     class Truck : Vehicle
     {
         public float Capacity { get; set; }

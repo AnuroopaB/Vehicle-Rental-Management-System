@@ -1,11 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿//Motorcycle class
+
+using System;
 
 namespace Vehicle_Rental_Management_System
 {
+    //Inheritance
+    //Inheriting properties of parent class Vehicle
     class Motorcycle : Vehicle
     {
         public int EngineCapacity { get; set; }

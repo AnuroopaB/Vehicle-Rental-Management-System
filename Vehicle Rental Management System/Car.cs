@@ -1,12 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
+﻿//Car class
 
 namespace Vehicle_Rental_Management_System
 {
+    //Inheritance
+    //Inheriting properties of parent class Vehicle
     class Car : Vehicle
     {
         public int Seats { get; set; }
