@@ -40,7 +40,7 @@
                 HasFairing = true,
                 vName = "Motorcycle_1"
             };
-            RentalAgency rentalAgency = new RentalAgency(325, 2);
+            RentalAgency rentalAgency = new RentalAgency(0, 2);
             rentalAgency.Fleet[0] = car;
             rentalAgency.Fleet[1] = truck;
             rentalAgency.Fleet[2] = motorcycle;

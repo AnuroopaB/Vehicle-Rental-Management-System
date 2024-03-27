@@ -9,10 +9,9 @@ namespace Vehicle_Rental_Management_System
         public Vehicle[] Fleet = new Vehicle[50];
         public double TotalRevenue { get; set; }
         public int count { get; set; }
-        string vehicleType, model, manufacturer, engineType, transmission, vName, truckType, fuelType;
-        int year, seats, capacity, engineCapacity, carIncrement = 2, truckIncrement = 2, motorCycleIncrement = 2;
-        double rentalPrice;
-        bool convertible, fourWheelDrive, hasFairing;
+        string vehicleType;
+        int carIncrement = 2, truckIncrement = 2, motorCycleIncrement = 2;
+        
 
         //Constructor
         public RentalAgency(double totalRevenue, int vehicleCount)
@@ -27,55 +26,30 @@ namespace Vehicle_Rental_Management_System
             string vehicleType = (Console.ReadLine()).ToLower();
             if (vehicleType == "car")
             {
-                VehicleProperties(vehicleType);
-                Car car = new Car
-                {
-                    Model = model,
-                    Manufacturer = manufacturer,
-                    Year = year,
-                    RentalPrice = rentalPrice,
-                    Seats = seats,
-                    EngineType = engineType,
-                    Transmission = transmission,
-                    Convertible = convertible,
-                    vName = vName
-                };
+                Car car = new Car();
+                car.CarDetails();
                 Fleet[++count] = car;
-                CheckAdd("car",vName);
+                car.vName = "Car_" + carIncrement.ToString();
+                carIncrement++;
+                CheckAdd("car",car.vName);
             }
             else if (vehicleType == "truck")
             {
-                VehicleProperties(vehicleType);
-                Truck truck = new Truck
-                {
-                    Model = model,
-                    Manufacturer = manufacturer,
-                    Year = year,
-                    RentalPrice = rentalPrice,
-                    Capacity = capacity,
-                    TruckType = truckType,
-                    FourWheelDrive = fourWheelDrive,
-                    vName = vName
-                };
+                Truck truck = new Truck();
+                truck.TruckDetails();
                 Fleet[++count] = truck;
-                CheckAdd("truck", vName);
+                truck.vName = "Truck_" + truckIncrement.ToString();
+                truckIncrement++;
+                CheckAdd("truck", truck.vName);
             }
             else if (vehicleType == "motorcycle")
             {
-                VehicleProperties(vehicleType);
-                Motorcycle motorcycle = new Motorcycle
-                {
-                    Model = model,
-                    Manufacturer = manufacturer,
-                    Year = year,
-                    RentalPrice = rentalPrice,
-                    EngineCapacity = engineCapacity,
-                    FuelType = fuelType,
-                    HasFairing = hasFairing,
-                    vName = vName
-                };
+                Motorcycle motorcycle = new Motorcycle();
+                motorcycle.MotorcycleDetails();
                 Fleet[++count] = motorcycle;
-                CheckAdd("motorcycle", vName);
+                motorcycle.vName = "Motorcycle_" + motorCycleIncrement.ToString();
+                motorCycleIncrement++;
+                CheckAdd("motorcycle", motorcycle.vName);
             }
             else
             {
@@ -148,58 +122,6 @@ namespace Vehicle_Rental_Management_System
             if (Console.ReadLine().ToLower() == "yes")
             {
                 RentVehicle();
-            }
-        }
-
-        //Method for getting common and specific vehicle property details from user
-        void VehicleProperties(string vehicleType)
-        {
-            string check;
-            Console.Write("Enter the model of vehicle: ");
-            model = Console.ReadLine();
-            Console.Write("Enter the manufacturer of vehicle: ");
-            manufacturer = Console.ReadLine();
-            Console.Write("Enter the year of manufacture: ");
-            year = int.Parse(Console.ReadLine());
-            Console.Write("Enter the rental price per day: ");
-            rentalPrice = double.Parse(Console.ReadLine());
-            if (vehicleType == "car")
-            {
-                Console.Write("Enter the number of seats: ");
-                seats = int.Parse(Console.ReadLine());
-                Console.Write("Enter the type of engine: ");
-                engineType = Console.ReadLine();
-                Console.Write("Enter the Transmission: ");
-                transmission = Console.ReadLine();
-                Console.Write("Is it covertible (Yes/No)? ");
-                check = (Console.ReadLine()).ToLower();
-                convertible = check == "yes" ? true : false;
-                vName = "Car_" + carIncrement.ToString();
-                carIncrement++;
-            }
-            else if (vehicleType == "truck")
-            {
-                Console.Write("Enter the passenger capacity: ");
-                capacity = int.Parse(Console.ReadLine());
-                Console.Write("Enter the type of truck: ");
-                truckType = Console.ReadLine();
-                Console.Write("Is it four wheel drive (Yes/No)? ");
-                check = (Console.ReadLine()).ToLower();
-                fourWheelDrive = check == "yes" ? true : false;
-                vName = "Truck_" + truckIncrement.ToString();
-                truckIncrement++;
-            }
-            else
-            {
-                Console.Write("Enter the engine capacity: ");
-                engineCapacity = int.Parse(Console.ReadLine());
-                Console.Write("Enter the type of fuel: ");
-                fuelType = Console.ReadLine();
-                Console.Write("Has fairing (Yes/No)? ");
-                check = (Console.ReadLine()).ToLower();
-                hasFairing = check == "yes" ? true : false;
-                this.vName = "Motorcycle_" + motorCycleIncrement.ToString();
-                motorCycleIncrement++;
             }
         }
 
